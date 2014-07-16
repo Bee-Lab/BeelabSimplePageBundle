@@ -1,6 +1,6 @@
 <?php
 
-namespace Beelab\MediaBundle\Tests\Entity;
+namespace Beelab\MediaBundle\Tests\Util;
 
 use Beelab\SimplePageBundle\Util\BreadCrumbs;
 use PHPUnit_Framework_TestCase;

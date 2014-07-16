@@ -38,6 +38,8 @@ class Page
      *
      * @ORM\Column(unique=true)
      * @Assert\NotBlank()
+     * @Assert\Regex(pattern="/^[^\/][\w\/\-]+$/i")
+     * @Assert\Length(max=255)
      */
     protected $path;
 
@@ -46,6 +48,7 @@ class Page
      *
      * @ORM\Column()
      * @Assert\NotBlank()
+     * @Assert\Length(max=255)
      */
     protected $title;
 
