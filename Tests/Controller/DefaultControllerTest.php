@@ -7,11 +7,12 @@ use PHPUnit_Framework_TestCase;
 
 class DefaultControllerTest extends PHPUnit_Framework_TestCase
 {
-    protected $controller, $container, $formBuilder, $userManager;
+    protected $controller;
+    protected $container;
 
-    public function setUp()
+    protected function setUp()
     {
-        $this->container = $this->getMockBuilder('Symfony\Component\DependencyInjection\Container')->disableOriginalConstructor()->getMock();
+        $this->container = $this->getMock('Symfony\Component\DependencyInjection\ContainerInterface');
         $this->controller = new DefaultController();
         $this->controller->setContainer($this->container);
     }
@@ -36,13 +37,7 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue('bar'))
         ;
         $this->container
-            ->expects($this->once())
-            ->method('has')
-            ->with('doctrine')
-            ->will($this->returnValue(true))
-        ;
-        $this->container
-            ->expects($this->once())
+            ->expects($this->any())
             ->method('get')
             ->with('doctrine')
             ->will($this->returnValue($reg))
@@ -58,6 +53,50 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
 
     public function testShowAction()
     {
-        $this->markTestIncomplete();
+        $page = $this->getMock('Beelab\SimplePageBundle\Entity\Page');
+        $reg = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $tpl = $this->getMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface');
+        $repo = $this
+            ->getMockBuilder('Doctrine\ORM\EntityRepository')
+            ->disableOriginalConstructor()
+            ->setMethods(array('findOneByPath'))
+            ->getMock();
+        $this->container
+            ->expects($this->at(0))
+            ->method('getParameter')
+            ->with('beelab_simple_page.page_class')
+            ->will($this->returnValue('foo'))
+        ;
+        $this->container
+            ->expects($this->at(1))
+            ->method('getParameter')
+            ->with('beelab_simple_page.resources_prefix')
+            ->will($this->returnValue('bar'))
+        ;
+        $this->container
+            ->expects($this->at(2))
+            ->method('get')
+            ->with('doctrine')
+            ->will($this->returnValue($reg))
+        ;
+        $this->container
+            ->expects($this->at(3))
+            ->method('get')
+            ->with('templating')
+            ->will($this->returnValue($tpl))
+        ;
+        $reg
+            ->expects($this->once())
+            ->method('getRepository')
+            ->with('foo')
+            ->will($this->returnValue($repo))
+        ;
+        $repo
+            ->expects($this->once())
+            ->method('findOneByPath')
+            ->with('foo')
+            ->will($this->returnValue($page))
+        ;
+        $this->controller->showAction('foo');
     }
 }

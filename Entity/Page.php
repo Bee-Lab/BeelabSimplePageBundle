@@ -3,12 +3,14 @@
 namespace Beelab\SimplePageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Page
  *
  * @ORM\MappedSuperclass
+ * @UniqueEntity(fields={"path"})
  */
 class Page
 {

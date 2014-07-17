@@ -3,9 +3,10 @@
 namespace Beelab\SimplePageBundle\Controller;
 
 use Beelab\SimplePageBundle\Util\BreadCrumbs;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class DefaultController extends Controller
+class DefaultController extends ContainerAware
 {
     /**
      * Show action
@@ -16,13 +17,13 @@ class DefaultController extends Controller
     {
         $entity = $this->container->getParameter('beelab_simple_page.page_class');
         $resourcesPrefix = $this->container->getParameter('beelab_simple_page.resources_prefix');
-        $page = $this->getDoctrine()->getRepository($entity)->findOneByPath($path);
+        $page = $this->container->get('doctrine')->getRepository($entity)->findOneByPath($path);
         if (empty($page)) {
-            throw $this->createNotFoundException(sprintf('Page not found for path "/%s".', $path));
+            throw new NotFoundHttpException(sprintf('Page not found for path "/%s".', $path));
         }
         $breadCrumbs = BreadCrumbs::create($path);
 
-        return $this->render($resourcesPrefix . $page->getTemplate() . '.html.twig', array(
+        return $this->container->get('templating')->renderResponse($resourcesPrefix . $page->getTemplate() . '.html.twig', array(
             'page'        => $page,
             'breadCrumbs' => $breadCrumbs,
         ));

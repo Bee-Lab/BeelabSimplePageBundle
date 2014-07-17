@@ -23,6 +23,11 @@ class PageTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $this->page->__toString());
     }
 
+    public function testGetId()
+    {
+        $this->assertNull($this->page->getId());
+    }
+
     public function testGetTemplate()
     {
         $this->page->setTemplate('foo');
