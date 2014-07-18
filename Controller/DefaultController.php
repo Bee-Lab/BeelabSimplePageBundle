@@ -22,8 +22,9 @@ class DefaultController extends ContainerAware
             throw new NotFoundHttpException(sprintf('Page not found for path "/%s".', $path));
         }
         $breadCrumbs = BreadCrumbs::create($path);
+        $template = $resourcesPrefix . str_replace(' ', '_', $page->getTemplate())  . '.html.twig';
 
-        return $this->container->get('templating')->renderResponse($resourcesPrefix . $page->getTemplate() . '.html.twig', array(
+        return $this->container->get('templating')->renderResponse($template, array(
             'page'        => $page,
             'breadCrumbs' => $breadCrumbs,
         ));

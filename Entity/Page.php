@@ -32,6 +32,7 @@ class Page
      *
      * @ORM\Column(options={"default": "default"})
      * @Assert\NotBlank()
+     * @Assert\Regex(pattern="/^[ \w\-]+$/i")
      */
     protected $template = 'default';
 
