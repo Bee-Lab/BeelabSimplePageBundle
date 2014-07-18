@@ -3,6 +3,8 @@ BeelabSimplePageBundle
 
 [![Total Downloads](https://poser.pugx.org/beelab/simple-page-bundle/downloads.png)](https://packagist.org/packages/beelab/simple-page-bundle) [![Build Status](https://travis-ci.org/Bee-Lab/BeelabSimplePageBundle.png?branch=master)](https://travis-ci.org/Bee-Lab/BeelabSimplePageBundle) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Bee-Lab/BeelabSimplePageBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Bee-Lab/BeelabSimplePageBundle/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/Bee-Lab/BeelabSimplePageBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Bee-Lab/BeelabSimplePageBundle/?branch=master)
 
+[![knpbundles.com](http://knpbundles.com/Bee-Lab/BeelabSimplePageBundle/badge)](http://knpbundles.com/Bee-Lab/BeelabSimplePageBundle)
+
 This bundle offers a simple management of pages for Symfony2 and Doctrine ORM.
 
 Documentation
