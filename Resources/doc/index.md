@@ -12,7 +12,7 @@ BeelabSimplePageBundle Documentation
 Run from terminal:
 
 ```bash
-$ php composer.phar require beelab/simple-page-bundle:1.0.*
+$ composer require beelab/simple-page-bundle
 ```
 
 Enable bundle in the kernel:
@@ -61,7 +61,7 @@ Insert in main configuration:
 
 # BeelabSimplePage Configuration
 beelab_simple_page:
-    page_class: Acme\DemoBundle\Entity\Page
+    page_class: AppBundle\Entity\Page
 ```
 
 Add to your routing configuration:
