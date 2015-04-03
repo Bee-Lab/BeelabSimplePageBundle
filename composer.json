@@ -3,12 +3,12 @@
     "type": "symfony-bundle",
     "description": "Managament of simple pages",
     "keywords": ["Page", "CMS"],
-    "homepage": "http://bee-lab.net",
+    "homepage": "https://bee-lab.net",
     "license": "LGPL-3.0",
     "authors": [
         {
             "name": "Massimiliano Arione ",
-            "email": "massimiliano.arione@bee-lab.it"
+            "email": "massimiliano.arione@bee-lab.net"
         }
     ],
     "require": {
@@ -23,7 +23,6 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-0": { "Beelab\\SimplePageBundle": "" }
-    },
-    "target-dir": "Beelab/SimplePageBundle"
+        "psr-4": { "Beelab\\SimplePageBundle\\": "" }
+    }
 }
