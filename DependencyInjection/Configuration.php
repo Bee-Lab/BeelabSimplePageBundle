@@ -28,6 +28,9 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                     ->defaultValue('BeelabSimplePageBundle:Default:')
                 ->end()
+                ->booleanNode('show_route')
+                    ->defaultValue(true)
+                ->end()
             ->end()
         ;
 

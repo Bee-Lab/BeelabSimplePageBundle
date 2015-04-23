@@ -1,11 +1,10 @@
 BeelabSimplePageBundle Documentation
 ====================================
 
-## Installation
-
 1. [Installation](#1-installation)
 2. [Configuration](#2-configuration)
 3. [Usage](#3-usage)
+4. [Complete configuration](#3-complete-configuration)
 
 ### 1. Installation
 
@@ -114,3 +113,18 @@ templates inside the ``$templates`` static property of your page entity.
 
 Likely, you'll want to create a CRUD for pages. If so, you must be aware that the ``path`` property of
 ``Page`` must not start with a slash (because of the way the ``page`` route is built).
+
+### 4. Complete Configuration
+
+The following is the complete configuration, with default values:
+
+```yaml
+beelab_simple_page:
+    page_class:       ~
+    resources_prefix: 'BeelabSimplePageBundle:Default:'
+    show_route:       true
+```
+
+The last option can be used to customize the behavior of validation. The default validation checks if the path
+submitted by user is contained in an existing route. Whit ``show_route`` options set to ``true`` (default value),
+the name of the matching route is displayed in the error message. Using ``false``, the route name will be omitted.

@@ -2,6 +2,7 @@
 
 namespace Beelab\SimplePageBundle\Entity;
 
+use Beelab\SimplePageBundle\Validator\Constraints\NoExistingRoute as AssertNoExistingRoute;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -19,7 +20,7 @@ class Page
     );
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -43,6 +44,7 @@ class Page
      * @Assert\NotBlank()
      * @Assert\Regex(pattern="/^[^\/][\w\/\-]+$/i")
      * @Assert\Length(max=255)
+     * @AssertNoExistingRoute()
      */
     protected $path;
 
@@ -74,7 +76,7 @@ class Page
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
