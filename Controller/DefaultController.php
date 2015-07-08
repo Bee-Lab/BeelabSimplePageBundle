@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DefaultController extends ContainerAware
 {
     /**
-     * Show action
+     * Show action.
      *
      * You must define a final route in your configuration, pointing to this action
      */
@@ -22,7 +22,7 @@ class DefaultController extends ContainerAware
             throw new NotFoundHttpException(sprintf('Page not found for path "/%s".', $path));
         }
         $breadCrumbs = BreadCrumbs::create($path);
-        $template = $resourcesPrefix . str_replace(' ', '_', $page->getTemplate())  . '.html.twig';
+        $template = $resourcesPrefix.str_replace(' ', '_', $page->getTemplate()).'.html.twig';
 
         return $this->container->get('templating')->renderResponse($template, array(
             'page'        => $page,

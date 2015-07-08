@@ -8,7 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Page
+ * Page.
  *
  * @ORM\MappedSuperclass
  * @UniqueEntity(fields={"path"})
@@ -74,7 +74,7 @@ class Page
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -84,9 +84,10 @@ class Page
     }
 
     /**
-     * Set template
+     * Set template.
      *
-     * @param  string $template
+     * @param string $template
+     *
      * @return Page
      */
     public function setTemplate($template)
@@ -97,7 +98,7 @@ class Page
     }
 
     /**
-     * Get template
+     * Get template.
      *
      * @return string
      */
@@ -107,9 +108,10 @@ class Page
     }
 
     /**
-     * Set path
+     * Set path.
      *
-     * @param  string $path
+     * @param string $path
+     *
      * @return Page
      */
     public function setPath($path)
@@ -120,7 +122,7 @@ class Page
     }
 
     /**
-     * Get path
+     * Get path.
      *
      * @return string
      */
@@ -130,9 +132,10 @@ class Page
     }
 
     /**
-     * Set title
+     * Set title.
      *
-     * @param  string $title
+     * @param string $title
+     *
      * @return Page
      */
     public function setTitle($title)
@@ -143,7 +146,7 @@ class Page
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -153,9 +156,10 @@ class Page
     }
 
     /**
-     * Set content
+     * Set content.
      *
-     * @param  string $content
+     * @param string $content
+     *
      * @return Page
      */
     public function setContent($content)
@@ -166,7 +170,7 @@ class Page
     }
 
     /**
-     * Get content
+     * Get content.
      *
      * @return string
      */
