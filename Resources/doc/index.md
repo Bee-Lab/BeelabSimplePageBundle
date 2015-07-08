@@ -74,12 +74,15 @@ page:
     path:      /{path}
     defaults:  { _controller: BeelabSimplePageBundle:Default:show, path: '' }
     requirements:
-        path: .+
+        path: "^(?!img\/|css\/|js\/).+"
 ```
 
 > **Warning**: The ``page`` route must be placed at the very end of your routing file,
 > since it uses a catch-all parameter. If you put any other route after ``page`` route,
 > it won't work.
+
+Note that ``page`` route is not matching for canonical URLs for images, styles and JavaScripts. Feel free to adapt
+the regular expression to match your assets directories.
 
 ### 3. Usage
 
