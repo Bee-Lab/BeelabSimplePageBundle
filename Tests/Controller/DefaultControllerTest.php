@@ -7,7 +7,14 @@ use PHPUnit_Framework_TestCase;
 
 class DefaultControllerTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var DefaultController
+     */
     protected $controller;
+
+    /**
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     */
     protected $container;
 
     protected function setUp()
@@ -22,7 +29,7 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testShowActionPageNotFound()
     {
-        $reg = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $registry = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
         $repo = $this->getMockBuilder('Doctrine\ORM\EntityRepository')->disableOriginalConstructor()->getMock();
         $this->container
             ->expects($this->at(0))
@@ -38,24 +45,32 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
         ;
         $this->container
             ->expects($this->any())
+            ->method('has')
+            ->will($this->returnValue(true))
+        ;
+        $this->container
+            ->expects($this->any())
             ->method('get')
             ->with('doctrine')
-            ->will($this->returnValue($reg))
+            ->will($this->returnValue($registry))
         ;
-        $reg
+        $registry
             ->expects($this->once())
             ->method('getRepository')
             ->with('foo')
             ->will($this->returnValue($repo))
         ;
+
         $this->controller->showAction('baz');
     }
 
     public function testShowAction()
     {
         $page = $this->getMock('Beelab\SimplePageBundle\Entity\Page');
-        $reg = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
-        $tpl = $this->getMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface');
+        $doctrine = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $templating = $this->getMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface');
+        $response = $this->getMock('Symfony\Component\HttpFoundation\Response');
+
         $repo = $this
             ->getMockBuilder('Doctrine\ORM\EntityRepository')
             ->disableOriginalConstructor()
@@ -74,18 +89,21 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
             ->will($this->returnValue('bar'))
         ;
         $this->container
-            ->expects($this->at(2))
-            ->method('get')
-            ->with('doctrine')
-            ->will($this->returnValue($reg))
+            ->expects($this->any())
+            ->method('has')
+            ->will($this->returnValue(true))
         ;
         $this->container
-            ->expects($this->at(3))
+            ->expects($this->any())
             ->method('get')
-            ->with('templating')
-            ->will($this->returnValue($tpl))
+            ->with($this->callback(function ($arg) {
+                return $arg;
+            }))
+            ->will($this->returnCallback(function ($arg) use ($doctrine, $templating) {
+                return ${$arg};
+            }))
         ;
-        $reg
+        $doctrine
             ->expects($this->once())
             ->method('getRepository')
             ->with('foo')
@@ -97,6 +115,12 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
             ->with('foo')
             ->will($this->returnValue($page))
         ;
+        $templating
+            ->expects($this->once())
+            ->method('renderResponse')
+            ->will($this->returnValue($response))
+        ;
+
         $this->controller->showAction('foo');
     }
 }

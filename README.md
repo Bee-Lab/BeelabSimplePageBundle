@@ -1,5 +1,5 @@
 BeelabSimplePageBundle
-===============
+======================
 
 [![Total Downloads](https://poser.pugx.org/beelab/simple-page-bundle/downloads.png)](https://packagist.org/packages/beelab/simple-page-bundle) [![Build Status](https://travis-ci.org/Bee-Lab/BeelabSimplePageBundle.png?branch=master)](https://travis-ci.org/Bee-Lab/BeelabSimplePageBundle) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Bee-Lab/BeelabSimplePageBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Bee-Lab/BeelabSimplePageBundle/?branch=master) [![Code Climate](https://codeclimate.com/github/Bee-Lab/BeelabSimplePageBundle/badges/gpa.svg)](https://codeclimate.com/github/Bee-Lab/BeelabSimplePageBundle) [![Test Coverage](https://codeclimate.com/github/Bee-Lab/BeelabSimplePageBundle/badges/coverage.svg)](https://codeclimate.com/github/Bee-Lab/BeelabSimplePageBundle/coverage)
 
