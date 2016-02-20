@@ -21,7 +21,7 @@ class BeelabSimplePageExtensionTest extends PHPUnit_Framework_TestCase
 
         $extension = new BeelabSimplePageExtension();
         $configs = array(
-            array('page_class'       => 'foo'),
+            array('page_class' => 'foo'),
             array('resources_prefix' => 'BarBundle:Dir:'),
         );
         $extension->load($configs, $container);

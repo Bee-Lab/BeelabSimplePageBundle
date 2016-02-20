@@ -21,9 +21,9 @@ class BreadCrumbs
         $return = array();
         $breadCrumbs = explode('/', $path);
         $length = count($breadCrumbs);
-        for ($i = 1; $i <= $length; $i++) {
+        for ($i = 1; $i <= $length; ++$i) {
             $current = '';
-            for ($j = 1; $j <= $i; $j++) {
+            for ($j = 1; $j <= $i; ++$j) {
                 $current .= $breadCrumbs[$j - 1].($j == $i ? '' : '/');
             }
             $return[$current] = $breadCrumbs[$i - 1];

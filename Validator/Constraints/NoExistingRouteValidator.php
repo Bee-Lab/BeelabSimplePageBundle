@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
- * Validate that a path is not used by any existing route
+ * Validate that a path is not used by any existing route.
  */
 class NoExistingRouteValidator extends ConstraintValidator
 {
