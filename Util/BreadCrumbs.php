@@ -6,11 +6,11 @@ class BreadCrumbs
 {
     /**
      * Create breadcrumbs from a path
-     * Example: if $path is "foo/bar/baz", $return is array(
+     * Example: if $path is "foo/bar/baz", $return is [
      *     'foo'         => 'foo',
      *     'foo/bar'     => 'bar',
      *     'foo/bar/baz' => 'baz',
-     * ).
+     * ].
      *
      * @param string $path
      *
@@ -18,7 +18,7 @@ class BreadCrumbs
      */
     public static function create($path)
     {
-        $return = array();
+        $return = [];
         $breadCrumbs = explode('/', $path);
         $length = count($breadCrumbs);
         for ($i = 1; $i <= $length; ++$i) {

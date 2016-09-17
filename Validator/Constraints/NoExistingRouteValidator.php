@@ -41,7 +41,7 @@ class NoExistingRouteValidator extends ConstraintValidator
         foreach ($routes as $name => $route) {
             if ($route->getPath() === '/'.$value) {
                 if ($this->showRoute) {
-                    $this->context->addViolation($constraint->message, array('{{ route }}' => $name));
+                    $this->context->addViolation($constraint->message, ['{{ route }}' => $name]);
                 } else {
                     $this->context->addViolation($constraint->messageWithoutRoute);
                 }

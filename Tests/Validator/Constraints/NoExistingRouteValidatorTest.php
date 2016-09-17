@@ -21,7 +21,7 @@ class NoExistingRouteValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new NoExistingRouteValidator($this->router);
         $validator->initialize($this->context);
-        $routes = array('foo_bar' => new Route('/foobar'));
+        $routes = ['foo_bar' => new Route('/foobar')];
         $constraint = new NoExistingRoute();
 
         $this->router->expects($this->once())->method('getRouteCollection')->will($this->returnValue($routes));
@@ -34,7 +34,7 @@ class NoExistingRouteValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new NoExistingRouteValidator($this->router, false);
         $validator->initialize($this->context);
-        $routes = array('bar_foo' => new Route('/barfoo'));
+        $routes = ['bar_foo' => new Route('/barfoo')];
         $constraint = new NoExistingRoute();
 
         $this->router->expects($this->once())->method('getRouteCollection')->will($this->returnValue($routes));
@@ -47,7 +47,7 @@ class NoExistingRouteValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new NoExistingRouteValidator($this->router, false);
         $validator->initialize($this->context);
-        $routes = array('foo_baz' => new Route('/foobaz'));
+        $routes = ['foo_baz' => new Route('/foobaz')];
         $constraint = new NoExistingRoute();
 
         $this->router->expects($this->once())->method('getRouteCollection')->will($this->returnValue($routes));

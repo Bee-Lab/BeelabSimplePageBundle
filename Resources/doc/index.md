@@ -21,16 +21,16 @@ Enable bundle in the kernel:
 // app/AppKernel.php
 public function registerBundles()
 {
-    $bundles = array(
+    $bundles = [
         // ...
         new Beelab\SimplePageBundle\BeelabSimplePageBundle(),
-    );
+    ];
 }
 ```
 
 ### 2. Configuration
 
-Create a ``Page`` entity class.
+Create a `Page` entity class.
 Example:
 
 ```php
@@ -77,11 +77,11 @@ page:
         path: "^(?!img\/|css\/|js\/).+"
 ```
 
-> **Warning**: The ``page`` route must be placed at the very end of your routing file,
+> **Warning**: The `page` route must be placed at the very end of your routing file,
 > since it uses a catch-all parameter. If you put any other route after ``page`` route,
 > it won't work.
 
-Note that ``page`` route is not matching for canonical URLs for images, styles and JavaScripts. Feel free to adapt
+Note that `page` route is not matching for canonical URLs for images, styles and JavaScripts. Feel free to adapt
 the regular expression to match your assets directories.
 
 ### 3. Usage
@@ -90,7 +90,7 @@ Just create some pages and use them in your website.
 
 This bundle provides a basic template. You can create your custom template and tell the bundle
 to use it.
-Suppose you created a template inside ``AppBundle\Resources\views\Page\default.html.twig``,
+Suppose you created a template inside `AppBundle\Resources\views\Page\default.html.twig`,
 you can add this to configuration:
 
 ```yaml
@@ -109,13 +109,13 @@ If you prefer a solutions suitable with official best practices, you can use the
 beelab_simple_page:
     resources_prefix: 'PageTemplate/'
 ```
-and put your page templates under ``app/Resources/views/PageTemplate/`` directory of your project.
+and put your page templates under `app/Resources/views/PageTemplate/` directory of your project.
 
-You can also create different templates with other names than ``default``. If you do so, you should add that new
-templates inside the ``$templates`` static property of your page entity.
+You can also create different templates with other names than `default`. If you do so, you should add that new
+templates inside the `$templates` static property of your page entity.
 
-Likely, you'll want to create a CRUD for pages. If so, you must be aware that the ``path`` property of
-``Page`` must not start with a slash (because of the way the ``page`` route is built).
+Likely, you'll want to create a CRUD for pages. If so, you must be aware that the `path` property of
+`Page` must not start with a slash (because of the way the `page` route is built).
 
 ### 4. Complete Configuration
 
@@ -129,5 +129,5 @@ beelab_simple_page:
 ```
 
 The last option can be used to customize the behavior of validation. The default validation checks if the path
-submitted by user is contained in an existing route. Whit ``show_route`` options set to ``true`` (default value),
-the name of the matching route is displayed in the error message. Using ``false``, the route name will be omitted.
+submitted by user is contained in an existing route. Whit `show_route` options set to `true` (default value),
+the name of the matching route is displayed in the error message. Using `false`, the route name will be omitted.

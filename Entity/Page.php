@@ -15,9 +15,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Page
 {
-    public static $templates = array(
+    public static $templates = [
         'default' => 'default',
-    );
+    ];
 
     /**
      * @var int

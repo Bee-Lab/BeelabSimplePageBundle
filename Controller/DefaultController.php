@@ -23,6 +23,6 @@ class DefaultController extends Controller
         $breadCrumbs = BreadCrumbs::create($path);
         $template = $resourcesPrefix.str_replace(' ', '_', $page->getTemplate()).'.html.twig';
 
-        return $this->render($template, array('page' => $page, 'breadCrumbs' => $breadCrumbs));
+        return $this->render($template, ['page' => $page, 'breadCrumbs' => $breadCrumbs]);
     }
 }

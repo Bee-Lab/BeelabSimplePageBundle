@@ -20,10 +20,10 @@ class BeelabSimplePageExtensionTest extends PHPUnit_Framework_TestCase
         $container->expects($this->any())->method('getParameterBag')->will($this->returnValue($parameterBag));
 
         $extension = new BeelabSimplePageExtension();
-        $configs = array(
-            array('page_class' => 'foo'),
-            array('resources_prefix' => 'BarBundle:Dir:'),
-        );
+        $configs = [
+            ['page_class' => 'foo'],
+            ['resources_prefix' => 'BarBundle:Dir:'],
+        ];
         $extension->load($configs, $container);
     }
 }

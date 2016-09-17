@@ -20,10 +20,10 @@ class BreadCrumbsTest extends PHPUnit_Framework_TestCase
 
     public function providerCreate()
     {
-        return array(
-            array('foo', array('foo' => 'foo')),
-            array('foo/bar', array('foo' => 'foo', 'foo/bar' => 'bar')),
-            array('foo/bar/baz', array('foo' => 'foo', 'foo/bar' => 'bar', 'foo/bar/baz' => 'baz')),
-        );
+        return [
+            ['foo', ['foo' => 'foo']],
+            ['foo/bar', ['foo' => 'foo', 'foo/bar' => 'bar']],
+            ['foo/bar/baz', ['foo' => 'foo', 'foo/bar' => 'bar', 'foo/bar/baz' => 'baz']],
+        ];
     }
 }

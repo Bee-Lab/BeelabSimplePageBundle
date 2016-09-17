@@ -74,7 +74,7 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
         $repo = $this
             ->getMockBuilder('Doctrine\ORM\EntityRepository')
             ->disableOriginalConstructor()
-            ->setMethods(array('findOneByPath'))
+            ->setMethods(['findOneByPath'])
             ->getMock();
         $this->container
             ->expects($this->at(0))
