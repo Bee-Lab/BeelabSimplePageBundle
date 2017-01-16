@@ -3,9 +3,9 @@
 namespace Beelab\SimplePageBundle\Tests\Controller;
 
 use Beelab\SimplePageBundle\Controller\DefaultController;
-use PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_TestCase as TestCase;
 
-class DefaultControllerTest extends PHPUnit_Framework_TestCase
+class DefaultControllerTest extends TestCase
 {
     /**
      * @var DefaultController

@@ -4,9 +4,10 @@ namespace Beelab\SimplePageBundle\Tests\Validator\Constraints;
 
 use Beelab\SimplePageBundle\Validator\Constraints\NoExistingRoute;
 use Beelab\SimplePageBundle\Validator\Constraints\NoExistingRouteValidator;
+use PHPUnit_Framework_TestCase as TestCase;
 use Symfony\Component\Routing\Route;
 
-class NoExistingRouteValidatorTest extends \PHPUnit_Framework_TestCase
+class NoExistingRouteValidatorTest extends TestCase
 {
     protected $router;
     protected $context;

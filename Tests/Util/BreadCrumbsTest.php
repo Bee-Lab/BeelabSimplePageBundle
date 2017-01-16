@@ -3,12 +3,12 @@
 namespace Beelab\MediaBundle\Tests\Util;
 
 use Beelab\SimplePageBundle\Util\BreadCrumbs;
-use PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_TestCase as TestCase;
 
 /**
  * @group unit
  */
-class BreadCrumbsTest extends PHPUnit_Framework_TestCase
+class BreadCrumbsTest extends TestCase
 {
     /**
      * @dataProvider providerCreate

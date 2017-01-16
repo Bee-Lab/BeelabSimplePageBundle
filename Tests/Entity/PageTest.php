@@ -3,12 +3,12 @@
 namespace Beelab\MediaBundle\Tests\Entity;
 
 use Beelab\SimplePageBundle\Entity\Page;
-use PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_TestCase as TestCase;
 
 /**
  * @group unit
  */
-class PageTest extends PHPUnit_Framework_TestCase
+class PageTest extends TestCase
 {
     protected $page;
 

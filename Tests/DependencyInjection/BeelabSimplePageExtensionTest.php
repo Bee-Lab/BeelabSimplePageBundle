@@ -3,12 +3,12 @@
 namespace Beelab\SimplePageBundle\Tests\DependencyInjection;
 
 use Beelab\SimplePageBundle\DependencyInjection\BeelabSimplePageExtension;
-use PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_TestCase as TestCase;
 
 /**
  * @group unit
  */
-class BeelabSimplePageExtensionTest extends PHPUnit_Framework_TestCase
+class BeelabSimplePageExtensionTest extends TestCase
 {
     public function testLoadSetParameters()
     {

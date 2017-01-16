@@ -3,12 +3,12 @@
 namespace Beelab\SimplePageBundle\Tests\DependencyInjection;
 
 use Beelab\SimplePageBundle\DependencyInjection\Configuration;
-use PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_TestCase as TestCase;
 
 /**
  * @group unit
  */
-class ConfigurationTest extends PHPUnit_Framework_TestCase
+class ConfigurationTest extends TestCase
 {
     public function testGetConfigTreeBuilder()
     {
