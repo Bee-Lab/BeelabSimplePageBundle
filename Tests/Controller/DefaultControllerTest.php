@@ -19,7 +19,7 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->container = $this->getMock('Symfony\Component\DependencyInjection\ContainerInterface');
+        $this->container = $this->createMock('Symfony\Component\DependencyInjection\ContainerInterface');
         $this->controller = new DefaultController();
         $this->controller->setContainer($this->container);
     }
@@ -29,7 +29,7 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
      */
     public function testShowActionPageNotFound()
     {
-        $registry = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $registry = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');
         $repo = $this->getMockBuilder('Doctrine\ORM\EntityRepository')->disableOriginalConstructor()->getMock();
         $this->container
             ->expects($this->at(0))
@@ -66,10 +66,10 @@ class DefaultControllerTest extends PHPUnit_Framework_TestCase
 
     public function testShowAction()
     {
-        $page = $this->getMock('Beelab\SimplePageBundle\Entity\Page');
-        $doctrine = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
-        $templating = $this->getMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface');
-        $response = $this->getMock('Symfony\Component\HttpFoundation\Response');
+        $page = $this->createMock('Beelab\SimplePageBundle\Entity\Page');
+        $doctrine = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $templating = $this->createMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface');
+        $response = $this->createMock('Symfony\Component\HttpFoundation\Response');
 
         $repo = $this
             ->getMockBuilder('Doctrine\ORM\EntityRepository')

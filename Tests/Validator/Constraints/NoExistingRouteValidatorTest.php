@@ -13,8 +13,8 @@ class NoExistingRouteValidatorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->router = $this->getMock('Symfony\Component\Routing\RouterInterface');
-        $this->context = $this->getMock('Symfony\Component\Validator\Context\ExecutionContextInterface');
+        $this->router = $this->createMock('Symfony\Component\Routing\RouterInterface');
+        $this->context = $this->createMock('Symfony\Component\Validator\Context\ExecutionContextInterface');
     }
 
     public function testInvalid()
