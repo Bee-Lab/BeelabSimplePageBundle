@@ -3,7 +3,7 @@
 namespace Beelab\SimplePageBundle\Tests\DependencyInjection;
 
 use Beelab\SimplePageBundle\DependencyInjection\Configuration;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group unit

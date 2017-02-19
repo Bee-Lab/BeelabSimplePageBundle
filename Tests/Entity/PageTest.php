@@ -3,7 +3,7 @@
 namespace Beelab\MediaBundle\Tests\Entity;
 
 use Beelab\SimplePageBundle\Entity\Page;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group unit

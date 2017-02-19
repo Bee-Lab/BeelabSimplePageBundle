@@ -3,7 +3,7 @@
 namespace Beelab\SimplePageBundle\Tests\DependencyInjection;
 
 use Beelab\SimplePageBundle\DependencyInjection\BeelabSimplePageExtension;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group unit
@@ -13,11 +13,8 @@ class BeelabSimplePageExtensionTest extends TestCase
     public function testLoadSetParameters()
     {
         $container = $this->getMockBuilder('Symfony\\Component\\DependencyInjection\\ContainerBuilder')->disableOriginalConstructor()->getMock();
-        $parameterBag = $this->getMockBuilder('Symfony\Component\DependencyInjection\ParameterBag\\ParameterBag')->disableOriginalConstructor()->getMock();
 
-        $parameterBag->expects($this->any())->method('add');
-
-        $container->expects($this->any())->method('getParameterBag')->will($this->returnValue($parameterBag));
+        $container->expects($this->exactly(3))->method('setParameter');
 
         $extension = new BeelabSimplePageExtension();
         $configs = [

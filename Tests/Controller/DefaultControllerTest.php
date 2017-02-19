@@ -3,7 +3,7 @@
 namespace Beelab\SimplePageBundle\Tests\Controller;
 
 use Beelab\SimplePageBundle\Controller\DefaultController;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class DefaultControllerTest extends TestCase
 {
