@@ -12,7 +12,7 @@ class DefaultController extends Controller
      *
      * You must define a final route in your configuration, pointing to this action
      */
-    public function showAction($path = '')
+    public function showAction(string $path = '')
     {
         $entity = $this->getParameter('beelab_simple_page.page_class');
         $resourcesPrefix = $this->getParameter('beelab_simple_page.resources_prefix');

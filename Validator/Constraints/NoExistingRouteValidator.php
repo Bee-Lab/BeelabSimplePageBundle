@@ -25,7 +25,7 @@ class NoExistingRouteValidator extends ConstraintValidator
      * @param RouterInterface $router
      * @param bool            $showRoute
      */
-    public function __construct(RouterInterface $router, $showRoute = true)
+    public function __construct(RouterInterface $router, bool $showRoute = true)
     {
         $this->router = $router;
         $this->showRoute = $showRoute;

@@ -1,7 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-
     <ol class="breadcrumb">
         {% if page.path != '' %}
             <li><a href="{{ path('page') }}">homepage</a></li>
@@ -16,5 +15,4 @@
     <div>
         {{ page.content|raw }}
     </div>
-
 {% endblock %}

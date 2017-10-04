@@ -68,15 +68,13 @@ class Page
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->title;
     }
 
     /**
-     * Get id.
-     *
-     * @return int
+     * @return int|null
      */
     public function getId()
     {
@@ -84,9 +82,7 @@ class Page
     }
 
     /**
-     * Set template.
-     *
-     * @param string $template
+     * @param string|null $template
      *
      * @return Page
      */
@@ -98,9 +94,7 @@ class Page
     }
 
     /**
-     * Get template.
-     *
-     * @return string
+     * @return string|null
      */
     public function getTemplate()
     {
@@ -108,9 +102,7 @@ class Page
     }
 
     /**
-     * Set path.
-     *
-     * @param string $path
+     * @param string|null $path
      *
      * @return Page
      */
@@ -122,9 +114,7 @@ class Page
     }
 
     /**
-     * Get path.
-     *
-     * @return string
+     * @return string|null
      */
     public function getPath()
     {
@@ -132,9 +122,7 @@ class Page
     }
 
     /**
-     * Set title.
-     *
-     * @param string $title
+     * @param string|null $title
      *
      * @return Page
      */
@@ -146,9 +134,7 @@ class Page
     }
 
     /**
-     * Get title.
-     *
-     * @return string
+     * @return string|null
      */
     public function getTitle()
     {
@@ -156,9 +142,7 @@ class Page
     }
 
     /**
-     * Set content.
-     *
-     * @param string $content
+     * @param string|null $content
      *
      * @return Page
      */
@@ -170,9 +154,7 @@ class Page
     }
 
     /**
-     * Get content.
-     *
-     * @return string
+     * @return string|null
      */
     public function getContent()
     {
