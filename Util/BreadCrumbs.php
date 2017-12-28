@@ -16,7 +16,7 @@ class BreadCrumbs
      *
      * @return array
      */
-    public static function create($path)
+    public static function create(string $path): array
     {
         $return = [];
         $breadCrumbs = explode('/', $path);

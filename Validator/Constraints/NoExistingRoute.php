@@ -12,10 +12,7 @@ class NoExistingRoute extends Constraint
     public $message = 'This path match existing route ({{ route }}).';
     public $messageWithoutRoute = 'This path match existing route.';
 
-    /**
-     * {@inheritdoc}
-     */
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return 'no_existing_route';
     }

@@ -115,8 +115,14 @@ class DefaultControllerTest extends TestCase
             ->with('foo')
             ->will($this->returnValue($page))
         ;
+        // we need to expect both "render" and "renderResponse" to support older Symfony versions
         $templating
-            ->expects($this->once())
+            ->expects($this->any())
+            ->method('renderResponse')
+            ->will($this->returnValue($response))
+        ;
+        $templating
+            ->expects($this->any())
             ->method('render')
             ->will($this->returnValue($response))
         ;
