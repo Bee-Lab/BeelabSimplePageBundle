@@ -14,7 +14,7 @@ Run from terminal:
 $ composer require beelab/simple-page-bundle
 ```
 
-Enable bundle in the kernel:
+If you don't use Flex, enable bundle in the kernel:
 
 ```php
 <?php
@@ -42,8 +42,6 @@ use Beelab\SimplePageBundle\Entity\Page as BasePage;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Page
- *
  * @ORM\Table()
  * @ORM\Entity()
  */
@@ -71,14 +69,14 @@ Add to your routing configuration:
 # your other routes...
 
 page:
-    path:      /{path}
-    defaults:  { _controller: BeelabSimplePageBundle:Default:show, path: '' }
+    path: /{path}
+    defaults: { _controller: BeelabSimplePageBundle:Default:show, path: '' }
     requirements:
         path: "^(?!img\/|css\/|js\/).+"
 ```
 
 > ⚠️️ **Warning**: The `page` route must be placed at the very end of your routing file,
-> since it uses a catch-all parameter. If you put any other route after ``page`` route,
+> since it uses a catch-all parameter. If you put any other route after `page` route,
 > it won't work.
 
 Note that `page` route is not matching for canonical URLs for images, styles and JavaScripts. Feel free to adapt
@@ -98,7 +96,7 @@ you can add this to configuration:
 
 # BeelabSimplePage Configuration
 beelab_simple_page:
-    page_class:       AppBundle\Entity\Page
+    page_class: AppBundle\Entity\Page
     resources_prefix: 'AppBundle:Page:'
 ```
 
@@ -123,9 +121,9 @@ The following is the complete configuration, with default values:
 
 ```yaml
 beelab_simple_page:
-    page_class:       ~
+    page_class: ~
     resources_prefix: 'BeelabSimplePageBundle:Default:'
-    show_route:       true
+    show_route: true
 ```
 
 The last option can be used to customize the behavior of validation. The default validation checks if the path

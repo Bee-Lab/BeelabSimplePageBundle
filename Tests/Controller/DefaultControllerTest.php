@@ -4,6 +4,7 @@ namespace Beelab\SimplePageBundle\Tests\Controller;
 
 use Beelab\SimplePageBundle\Controller\DefaultController;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultControllerTest extends TestCase
 {
@@ -24,11 +25,10 @@ class DefaultControllerTest extends TestCase
         $this->controller->setContainer($this->container);
     }
 
-    /**
-     * @expectedException \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     */
     public function testShowActionPageNotFound()
     {
+        $this->expectException(NotFoundHttpException::class);
+
         $registry = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');
         $repo = $this->getMockBuilder('Doctrine\ORM\EntityRepository')->disableOriginalConstructor()->getMock();
         $this->container
@@ -117,7 +117,7 @@ class DefaultControllerTest extends TestCase
         ;
         $templating
             ->expects($this->once())
-            ->method('renderResponse')
+            ->method('render')
             ->will($this->returnValue($response))
         ;
 

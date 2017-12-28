@@ -4,6 +4,7 @@ namespace Beelab\SimplePageBundle\Controller;
 
 use Beelab\SimplePageBundle\Util\BreadCrumbs;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -12,7 +13,7 @@ class DefaultController extends Controller
      *
      * You must define a final route in your configuration, pointing to this action
      */
-    public function showAction(string $path = '')
+    public function showAction(string $path = ''): Response
     {
         $entity = $this->getParameter('beelab_simple_page.page_class');
         $resourcesPrefix = $this->getParameter('beelab_simple_page.resources_prefix');
