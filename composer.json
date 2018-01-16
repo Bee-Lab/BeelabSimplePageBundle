@@ -4,7 +4,7 @@
     "description": "Managament of simple pages",
     "keywords": ["Page", "CMS"],
     "homepage": "https://github.com/Bee-Lab",
-    "license": "LGPL-3.0",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Massimiliano Arione",
