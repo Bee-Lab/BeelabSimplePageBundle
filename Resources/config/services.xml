@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="beelab_simple_page.validator.no_existing_route" class="Beelab\SimplePageBundle\Validator\Constraints\NoExistingRouteValidator">
+        <service id="beelab_simple_page.validator.no_existing_route" class="Beelab\SimplePageBundle\Validator\Constraints\NoExistingRouteValidator" public="true">
             <argument type="service" id="router" />
             <argument>%beelab_simple_page.show_route%</argument>
             <tag name="validator.constraint_validator" alias="no_existing_route" />
