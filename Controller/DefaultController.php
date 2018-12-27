@@ -19,10 +19,10 @@ class DefaultController extends Controller
         $resourcesPrefix = $this->getParameter('beelab_simple_page.resources_prefix');
         $page = $this->getDoctrine()->getRepository($entity)->findOneByPath($path);
         if (empty($page)) {
-            throw $this->createNotFoundException(sprintf('Page not found for path "/%s".', $path));
+            throw $this->createNotFoundException(\sprintf('Page not found for path "/%s".', $path));
         }
         $breadCrumbs = BreadCrumbs::create($path);
-        $template = $resourcesPrefix.str_replace(' ', '_', $page->getTemplate()).'.html.twig';
+        $template = $resourcesPrefix.\str_replace(' ', '_', $page->getTemplate()).'.html.twig';
 
         return $this->render($template, ['page' => $page, 'breadCrumbs' => $breadCrumbs]);
     }

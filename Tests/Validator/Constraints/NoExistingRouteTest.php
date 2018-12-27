@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class NoExistingRouteTest extends TestCase
 {
-    public function testValidatedBy()
+    public function testValidatedBy(): void
     {
         $constraint = new NoExistingRoute();
 

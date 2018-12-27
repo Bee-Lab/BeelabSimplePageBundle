@@ -18,14 +18,14 @@ class DefaultControllerTest extends TestCase
      */
     protected $container;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->container = $this->createMock('Symfony\Component\DependencyInjection\ContainerInterface');
         $this->controller = new DefaultController();
         $this->controller->setContainer($this->container);
     }
 
-    public function testShowActionPageNotFound()
+    public function testShowActionPageNotFound(): void
     {
         $this->expectException(NotFoundHttpException::class);
 
@@ -64,7 +64,7 @@ class DefaultControllerTest extends TestCase
         $this->controller->showAction('baz');
     }
 
-    public function testShowAction()
+    public function testShowAction(): void
     {
         $page = $this->createMock('Beelab\SimplePageBundle\Entity\Page');
         $doctrine = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');

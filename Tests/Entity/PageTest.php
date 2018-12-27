@@ -12,41 +12,41 @@ class PageTest extends TestCase
 {
     protected $page;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->page = new Page();
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $this->page->setTitle('foo');
         $this->assertEquals('foo', $this->page->__toString());
     }
 
-    public function testGetId()
+    public function testGetId(): void
     {
         $this->assertNull($this->page->getId());
     }
 
-    public function testGetTemplate()
+    public function testGetTemplate(): void
     {
         $this->page->setTemplate('foo');
         $this->assertEquals('foo', $this->page->getTemplate());
     }
 
-    public function testGetPath()
+    public function testGetPath(): void
     {
         $this->page->setPath('foo');
         $this->assertEquals('foo', $this->page->getPath());
     }
 
-    public function testGetTitle()
+    public function testGetTitle(): void
     {
         $this->page->setTitle('foo');
         $this->assertEquals('foo', $this->page->getTitle());
     }
 
-    public function testGetContent()
+    public function testGetContent(): void
     {
         $this->page->setContent('foo');
         $this->assertEquals('foo', $this->page->getContent());

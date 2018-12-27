@@ -27,7 +27,7 @@ class NoExistingRouteValidator extends ConstraintValidator
         $this->showRoute = $showRoute;
     }
 
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         $routes = $this->router->getRouteCollection();
         /* @var \Symfony\Component\Routing\Route $route */

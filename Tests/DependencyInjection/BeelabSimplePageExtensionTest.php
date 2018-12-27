@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class BeelabSimplePageExtensionTest extends TestCase
 {
-    public function testLoadSetParameters()
+    public function testLoadSetParameters(): void
     {
         $container = $this->getMockBuilder('Symfony\\Component\\DependencyInjection\\ContainerBuilder')->disableOriginalConstructor()->getMock();
 

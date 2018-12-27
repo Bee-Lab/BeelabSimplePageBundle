@@ -13,7 +13,7 @@ class BreadCrumbsTest extends TestCase
     /**
      * @dataProvider providerCreate
      */
-    public function testCreate($path, $breadCrumbs)
+    public function testCreate($path, $breadCrumbs): void
     {
         $this->assertEquals($breadCrumbs, BreadCrumbs::create($path));
     }

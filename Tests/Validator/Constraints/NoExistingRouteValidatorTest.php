@@ -12,13 +12,13 @@ class NoExistingRouteValidatorTest extends TestCase
     protected $router;
     protected $context;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->router = $this->createMock('Symfony\Component\Routing\RouterInterface');
         $this->context = $this->createMock('Symfony\Component\Validator\Context\ExecutionContextInterface');
     }
 
-    public function testInvalid()
+    public function testInvalid(): void
     {
         $validator = new NoExistingRouteValidator($this->router);
         $validator->initialize($this->context);
@@ -31,7 +31,7 @@ class NoExistingRouteValidatorTest extends TestCase
         $validator->validate('foobar', $constraint);
     }
 
-    public function testInvalidWithoutRoute()
+    public function testInvalidWithoutRoute(): void
     {
         $validator = new NoExistingRouteValidator($this->router, false);
         $validator->initialize($this->context);
@@ -44,7 +44,7 @@ class NoExistingRouteValidatorTest extends TestCase
         $validator->validate('barfoo', $constraint);
     }
 
-    public function testValid()
+    public function testValid(): void
     {
         $validator = new NoExistingRouteValidator($this->router, false);
         $validator->initialize($this->context);

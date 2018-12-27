@@ -20,7 +20,7 @@ class Page
     ];
 
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -29,7 +29,7 @@ class Page
     protected $id;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(options={"default": "default"})
      * @Assert\NotBlank()
@@ -38,7 +38,7 @@ class Page
     protected $template = 'default';
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(unique=true)
      * @Assert\NotBlank()
@@ -49,7 +49,7 @@ class Page
     protected $path;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column()
      * @Assert\NotBlank()
@@ -58,16 +58,13 @@ class Page
     protected $title;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      */
     protected $content;
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->title;
@@ -81,82 +78,50 @@ class Page
         return $this->id;
     }
 
-    /**
-     * @param string|null $template
-     *
-     * @return Page
-     */
-    public function setTemplate($template)
+    public function setTemplate(?string $template): self
     {
         $this->template = $template;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTemplate()
+    public function getTemplate(): ?string
     {
         return $this->template;
     }
 
-    /**
-     * @param string|null $path
-     *
-     * @return Page
-     */
-    public function setPath($path)
+    public function setPath(?string $path): self
     {
         $this->path = $path;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getPath()
+    public function getPath(): ?string
     {
         return $this->path;
     }
 
-    /**
-     * @param string|null $title
-     *
-     * @return Page
-     */
-    public function setTitle($title)
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string|null $content
-     *
-     * @return Page
-     */
-    public function setContent($content)
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
