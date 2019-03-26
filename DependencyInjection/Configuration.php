@@ -5,17 +5,13 @@ namespace Beelab\SimplePageBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/**
- * This is the class that validates and merges configuration from your configuration files.
- *
- * To learn more see {@link http://symfony.com/doc/current/bundles/extension.html}
- */
-class Configuration implements ConfigurationInterface
+final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('beelab_simple_page');
+        $treeBuilder = new TreeBuilder('beelab_simple_page');
+        // BC layer for symfony/config < 4.2
+        $rootNode = \method_exists($treeBuilder, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('beelab_simple_page');
         $rootNode
             ->children()
                 ->scalarNode('page_class')
