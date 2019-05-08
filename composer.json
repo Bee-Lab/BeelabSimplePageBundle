@@ -2,7 +2,10 @@
     "name": "beelab/simple-page-bundle",
     "type": "symfony-bundle",
     "description": "Managament of simple pages",
-    "keywords": ["Page", "CMS"],
+    "keywords": [
+        "Page",
+        "CMS"
+    ],
     "homepage": "https://github.com/Bee-Lab",
     "license": "LGPL-3.0-or-later",
     "authors": [
@@ -14,9 +17,9 @@
     "require": {
         "php": "^7.1",
         "doctrine/orm": "^2.6",
-        "symfony/framework-bundle": "^3.4|^4.1",
-        "symfony/templating": "^3.4|^4.1",
-        "symfony/validator": "^3.4|^4.1"
+        "symfony/framework-bundle": "^3.4 || ^4.1",
+        "symfony/templating": "^3.4 || ^4.1",
+        "symfony/validator": "^3.4 || ^4.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0"
@@ -25,12 +28,14 @@
         "bin-dir": "bin",
         "sort-packages": true
     },
-    "autoload": {
-        "psr-4": { "Beelab\\SimplePageBundle\\": "" }
-    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.4.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Beelab\\SimplePageBundle\\": ""
         }
     }
 }
