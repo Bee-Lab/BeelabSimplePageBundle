@@ -25,7 +25,7 @@ class NoExistingRouteValidatorTest extends TestCase
         $routes = ['foo_bar' => new Route('/foobar')];
         $constraint = new NoExistingRoute();
 
-        $this->router->expects($this->once())->method('getRouteCollection')->will($this->returnValue($routes));
+        $this->router->expects($this->once())->method('getRouteCollection')->willReturn($routes);
         $this->context->expects($this->atLeastOnce())->method('addViolation');
 
         $validator->validate('foobar', $constraint);
@@ -38,7 +38,7 @@ class NoExistingRouteValidatorTest extends TestCase
         $routes = ['bar_foo' => new Route('/barfoo')];
         $constraint = new NoExistingRoute();
 
-        $this->router->expects($this->once())->method('getRouteCollection')->will($this->returnValue($routes));
+        $this->router->expects($this->once())->method('getRouteCollection')->willReturn($routes);
         $this->context->expects($this->atLeastOnce())->method('addViolation');
 
         $validator->validate('barfoo', $constraint);
@@ -51,7 +51,7 @@ class NoExistingRouteValidatorTest extends TestCase
         $routes = ['foo_baz' => new Route('/foobaz')];
         $constraint = new NoExistingRoute();
 
-        $this->router->expects($this->once())->method('getRouteCollection')->will($this->returnValue($routes));
+        $this->router->expects($this->once())->method('getRouteCollection')->willReturn($routes);
         $this->context->expects($this->never())->method('addViolation');
 
         $validator->validate('bazbaz', $constraint);

@@ -35,30 +35,30 @@ class DefaultControllerTest extends TestCase
             ->expects($this->at(0))
             ->method('getParameter')
             ->with('beelab_simple_page.page_class')
-            ->will($this->returnValue('foo'))
+            ->willReturn('foo')
         ;
         $this->container
             ->expects($this->at(1))
             ->method('getParameter')
             ->with('beelab_simple_page.resources_prefix')
-            ->will($this->returnValue('bar'))
+            ->willReturn('bar')
         ;
         $this->container
             ->expects($this->any())
             ->method('has')
-            ->will($this->returnValue(true))
+            ->willReturn(true)
         ;
         $this->container
             ->expects($this->any())
             ->method('get')
             ->with('doctrine')
-            ->will($this->returnValue($registry))
+            ->willReturn($registry)
         ;
         $registry
             ->expects($this->once())
             ->method('getRepository')
             ->with('foo')
-            ->will($this->returnValue($repo))
+            ->willReturn($repo)
         ;
 
         $this->controller->showAction('baz');
@@ -80,18 +80,18 @@ class DefaultControllerTest extends TestCase
             ->expects($this->at(0))
             ->method('getParameter')
             ->with('beelab_simple_page.page_class')
-            ->will($this->returnValue('foo'))
+            ->willReturn('foo')
         ;
         $this->container
             ->expects($this->at(1))
             ->method('getParameter')
             ->with('beelab_simple_page.resources_prefix')
-            ->will($this->returnValue('bar'))
+            ->willReturn('bar')
         ;
         $this->container
             ->expects($this->any())
             ->method('has')
-            ->will($this->returnValue(true))
+            ->willReturn(true)
         ;
         $this->container
             ->expects($this->any())
@@ -99,32 +99,32 @@ class DefaultControllerTest extends TestCase
             ->with($this->callback(function ($arg) {
                 return $arg;
             }))
-            ->will($this->returnCallback(function ($arg) use ($doctrine, $templating) {
+            ->willReturnCallback(function ($arg) use ($doctrine, $templating) {
                 return ${$arg};
-            }))
+            })
         ;
         $doctrine
             ->expects($this->once())
             ->method('getRepository')
             ->with('foo')
-            ->will($this->returnValue($repo))
+            ->willReturn($repo)
         ;
         $repo
             ->expects($this->once())
             ->method('findOneByPath')
             ->with('foo')
-            ->will($this->returnValue($page))
+            ->willReturn($page)
         ;
         // we need to expect both "render" and "renderResponse" to support older Symfony versions
         $templating
             ->expects($this->any())
             ->method('renderResponse')
-            ->will($this->returnValue($response))
+            ->willReturn($response)
         ;
         $templating
             ->expects($this->any())
             ->method('render')
-            ->will($this->returnValue($response))
+            ->willReturn($response)
         ;
 
         $this->controller->showAction('foo');
