@@ -4,6 +4,7 @@ namespace Beelab\SimplePageBundle\Tests\Controller;
 
 use Beelab\SimplePageBundle\Controller\DefaultController;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultControllerTest extends TestCase
@@ -14,13 +15,13 @@ class DefaultControllerTest extends TestCase
     protected $controller;
 
     /**
-     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     * @var ContainerInterface&\PHPUnit\Framework\MockObject\MockObject
      */
     protected $container;
 
     protected function setUp(): void
     {
-        $this->container = $this->createMock('Symfony\Component\DependencyInjection\ContainerInterface');
+        $this->container = $this->createMock(ContainerInterface::class);
         $this->controller = new DefaultController();
         $this->controller->setContainer($this->container);
     }
@@ -96,10 +97,10 @@ class DefaultControllerTest extends TestCase
         $this->container
             ->expects($this->any())
             ->method('get')
-            ->with($this->callback(function ($arg) {
+            ->with($this->callback(static function ($arg) {
                 return $arg;
             }))
-            ->willReturnCallback(function ($arg) use ($doctrine, $templating) {
+            ->willReturnCallback(static function ($arg) use ($doctrine, $templating) {
                 return ${$arg};
             })
         ;

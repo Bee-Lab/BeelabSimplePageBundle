@@ -1,6 +1,6 @@
 <?php
 
-namespace Beelab\MediaBundle\Tests\Entity;
+namespace Beelab\SimplePageBundle\Tests\Entity;
 
 use Beelab\SimplePageBundle\Entity\Page;
 use PHPUnit\Framework\TestCase;
