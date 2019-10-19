@@ -98,7 +98,7 @@ class DefaultControllerTest extends TestCase
             ->expects($this->any())
             ->method('get')
             ->with($this->callback(static function ($arg) {
-                return $arg;
+                return 'doctrine' === $arg || 'templating' === $arg;
             }))
             ->willReturnCallback(static function ($arg) use ($doctrine, $templating) {
                 return ${$arg};
