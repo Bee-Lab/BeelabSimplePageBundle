@@ -5,7 +5,7 @@ namespace Beelab\SimplePageBundle\Tests\Validator\Constraints;
 use Beelab\SimplePageBundle\Validator\Constraints\NoExistingRoute;
 use PHPUnit\Framework\TestCase;
 
-class NoExistingRouteTest extends TestCase
+final class NoExistingRouteTest extends TestCase
 {
     public function testValidatedBy(): void
     {

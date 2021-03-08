@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group unit
  */
-class PageTest extends TestCase
+final class PageTest extends TestCase
 {
     protected $page;
 

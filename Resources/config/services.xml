@@ -10,6 +10,12 @@
             <argument>%beelab_simple_page.show_route%</argument>
             <tag name="validator.constraint_validator" alias="no_existing_route" />
         </service>
+        <service id="Beelab\SimplePageBundle\Controller\DefaultController" class="Beelab\SimplePageBundle\Controller\DefaultController" public="false">
+            <argument type="service" id="doctrine" />
+            <argument type="service" id="twig" />
+            <argument>%beelab_simple_page.page_class%</argument>
+            <argument>%beelab_simple_page.resources_prefix%</argument>
+        </service>
     </services>
 
 </container>

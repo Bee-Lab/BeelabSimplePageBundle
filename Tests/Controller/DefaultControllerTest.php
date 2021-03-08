@@ -3,60 +3,51 @@
 namespace Beelab\SimplePageBundle\Tests\Controller;
 
 use Beelab\SimplePageBundle\Controller\DefaultController;
+use Beelab\SimplePageBundle\Entity\Page;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Twig\Environment;
 
-class DefaultControllerTest extends TestCase
+final class DefaultControllerTest extends TestCase
 {
     /**
      * @var DefaultController
      */
-    protected $controller;
+    private $controller;
 
     /**
      * @var ContainerInterface&\PHPUnit\Framework\MockObject\MockObject
      */
-    protected $container;
+    private $container;
+
+    /**
+     * @var ManagerRegistry&\PHPUnit\Framework\MockObject\MockObject
+     */
+    private $doctrine;
+
+    /**
+     * @var Environment&\PHPUnit\Framework\MockObject\MockObject
+     */
+    private $twig;
 
     protected function setUp(): void
     {
         $this->container = $this->createMock(ContainerInterface::class);
-        $this->controller = new DefaultController();
-        $this->controller->setContainer($this->container);
+        $this->doctrine = $this->createMock(ManagerRegistry::class);
+        $this->twig = $this->createMock(Environment::class);
+        $this->controller = new DefaultController($this->doctrine, $this->twig, 'foo', 'bar');
     }
 
     public function testShowActionPageNotFound(): void
     {
         $this->expectException(NotFoundHttpException::class);
+        $repo = $this->createMock(EntityRepository::class);
 
-        $registry = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');
-        $repo = $this->getMockBuilder('Doctrine\ORM\EntityRepository')->disableOriginalConstructor()->getMock();
-        $this->container
-            ->expects($this->at(0))
-            ->method('getParameter')
-            ->with('beelab_simple_page.page_class')
-            ->willReturn('foo')
-        ;
-        $this->container
-            ->expects($this->at(1))
-            ->method('getParameter')
-            ->with('beelab_simple_page.resources_prefix')
-            ->willReturn('bar')
-        ;
-        $this->container
-            ->expects($this->any())
-            ->method('has')
-            ->willReturn(true)
-        ;
-        $this->container
-            ->expects($this->any())
-            ->method('get')
-            ->with('doctrine')
-            ->willReturn($registry)
-        ;
-        $registry
-            ->expects($this->once())
+        $this->doctrine
+            ->expects(self::once())
             ->method('getRepository')
             ->with('foo')
             ->willReturn($repo)
@@ -67,65 +58,32 @@ class DefaultControllerTest extends TestCase
 
     public function testShowAction(): void
     {
-        $page = $this->createMock('Beelab\SimplePageBundle\Entity\Page');
-        $doctrine = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');
-        $templating = $this->createMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface');
-        $response = $this->createMock('Symfony\Component\HttpFoundation\Response');
+        $page = $this->createMock(Page::class);
 
         $repo = $this
-            ->getMockBuilder('Doctrine\ORM\EntityRepository')
+            ->getMockBuilder(EntityRepository::class)
             ->disableOriginalConstructor()
-            ->setMethods(['findOneByPath'])
-            ->getMock();
-        $this->container
-            ->expects($this->at(0))
-            ->method('getParameter')
-            ->with('beelab_simple_page.page_class')
-            ->willReturn('foo')
+            ->addMethods(['findOneByPath'])
+            ->getMock()
         ;
-        $this->container
-            ->expects($this->at(1))
-            ->method('getParameter')
-            ->with('beelab_simple_page.resources_prefix')
-            ->willReturn('bar')
-        ;
-        $this->container
-            ->expects($this->any())
-            ->method('has')
-            ->willReturn(true)
-        ;
-        $this->container
-            ->expects($this->any())
-            ->method('get')
-            ->with($this->callback(static function ($arg) {
-                return 'doctrine' === $arg || 'templating' === $arg;
-            }))
-            ->willReturnCallback(static function ($arg) use ($doctrine, $templating) {
-                return ${$arg};
-            })
-        ;
-        $doctrine
-            ->expects($this->once())
+
+        $this->doctrine
+            ->expects(self::once())
             ->method('getRepository')
             ->with('foo')
             ->willReturn($repo)
         ;
+
         $repo
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('findOneByPath')
             ->with('foo')
             ->willReturn($page)
         ;
-        // we need to expect both "render" and "renderResponse" to support older Symfony versions
-        $templating
-            ->expects($this->any())
-            ->method('renderResponse')
-            ->willReturn($response)
-        ;
-        $templating
-            ->expects($this->any())
+
+        $this->twig
             ->method('render')
-            ->willReturn($response)
+            ->willReturn('html content...')
         ;
 
         $this->controller->showAction('foo');

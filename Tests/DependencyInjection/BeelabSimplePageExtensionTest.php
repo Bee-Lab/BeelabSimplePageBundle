@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @group unit
  */
-class BeelabSimplePageExtensionTest extends TestCase
+final class BeelabSimplePageExtensionTest extends TestCase
 {
     public function testLoadSetParameters(): void
     {

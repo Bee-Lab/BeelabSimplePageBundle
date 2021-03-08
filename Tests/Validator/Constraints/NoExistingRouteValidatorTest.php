@@ -6,16 +6,18 @@ use Beelab\SimplePageBundle\Validator\Constraints\NoExistingRoute;
 use Beelab\SimplePageBundle\Validator\Constraints\NoExistingRouteValidator;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-class NoExistingRouteValidatorTest extends TestCase
+final class NoExistingRouteValidatorTest extends TestCase
 {
     protected $router;
     protected $context;
 
     protected function setUp(): void
     {
-        $this->router = $this->createMock('Symfony\Component\Routing\RouterInterface');
-        $this->context = $this->createMock('Symfony\Component\Validator\Context\ExecutionContextInterface');
+        $this->router = $this->createMock(RouterInterface::class);
+        $this->context = $this->createMock(ExecutionContextInterface::class);
     }
 
     public function testInvalid(): void

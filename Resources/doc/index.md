@@ -14,19 +14,7 @@ Run from terminal:
 $ composer require beelab/simple-page-bundle
 ```
 
-If you don't use Flex, enable bundle in the kernel:
-
-```php
-<?php
-// app/AppKernel.php
-public function registerBundles()
-{
-    $bundles = [
-        // ...
-        new Beelab\SimplePageBundle\BeelabSimplePageBundle(),
-    ];
-}
-```
+Bundle is automatically enabled by Flex.
 
 ### 2. Configuration
 
@@ -35,8 +23,8 @@ Example:
 
 ```php
 <?php
-// src/AppBundle/Entity
-namespace AppBundle\Entity;
+// src/Entity
+namespace App\Entity;
 
 use Beelab\SimplePageBundle\Entity\Page as BasePage;
 use Doctrine\ORM\Mapping as ORM;
@@ -54,17 +42,16 @@ class Page extends BasePage
 Insert in main configuration:
 
 ```yaml
-# app/config/config.yml
+# config/packages/beelab_simple_page.yaml
 
-# BeelabSimplePage Configuration
 beelab_simple_page:
-    page_class: AppBundle\Entity\Page
+    page_class: App\Entity\Page
 ```
 
 Add to your routing configuration:
 
 ```yaml
-# app/config/routing.yml
+# config/routing.yaml
 
 # your other routes...
 
@@ -88,21 +75,20 @@ Just create some pages and use them in your website.
 
 This bundle provides a basic template. You can create your custom template and tell the bundle
 to use it.
-Suppose you created a template inside `AppBundle\Resources\views\Page\default.html.twig`,
+Suppose you created a template inside `App\Resources\views\Page\default.html.twig`,
 you can add this to configuration:
 
 ```yaml
-# app/config/config.yml
+# config/packages/beelab_simple_page.yaml
 
-# BeelabSimplePage Configuration
 beelab_simple_page:
-    page_class: AppBundle\Entity\Page
+    page_class: App\Entity\Page
     resources_prefix: 'AppBundle:Page:'
 ```
 
 If you prefer a solutions suitable with official best practices, you can use the same option like so:
 ```yaml
-# app/config/config.yml
+# config/packages/beelab_simple_page.yaml
 
 beelab_simple_page:
     resources_prefix: 'PageTemplate/'

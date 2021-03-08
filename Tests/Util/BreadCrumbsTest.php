@@ -8,17 +8,17 @@ use PHPUnit\Framework\TestCase;
 /**
  * @group unit
  */
-class BreadCrumbsTest extends TestCase
+final class BreadCrumbsTest extends TestCase
 {
     /**
      * @dataProvider providerCreate
      */
-    public function testCreate($path, $breadCrumbs): void
+    public function testCreate(string $path, array $breadCrumbs): void
     {
         $this->assertEquals($breadCrumbs, BreadCrumbs::create($path));
     }
 
-    public function providerCreate()
+    public function providerCreate(): array
     {
         return [
             ['foo', ['foo' => 'foo']],
